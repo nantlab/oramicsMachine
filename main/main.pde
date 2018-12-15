@@ -21,7 +21,7 @@ int numVert = 480/boxHeight;
 color[] downPix = new color[numHoriz * numVert];
 Capture video;
 
-int numberOfSamples = 5;
+int numberOfSamples = 6;
 SoundFile[] samples = new SoundFile[numberOfSamples];
 
 
@@ -57,10 +57,10 @@ void setup() {
   wekinatorLocation = new NetAddress("127.0.0.1", 6448);
 
 
-  samples[1] = new SoundFile(this, "../output/samples/kick.wav");
-  samples[2] = new SoundFile(this, "../output/samples/snare.wav");
-  samples[3] = new SoundFile(this, "../output/samples/hihat.wav");
-  samples[4] = new SoundFile(this, "../output/samples/clap.wav");
+  samples[2] = new SoundFile(this, "../output/samples/kick.wav");
+  samples[3] = new SoundFile(this, "../output/samples/snare.wav");
+  samples[4] = new SoundFile(this, "../output/samples/hihat.wav");
+  samples[5] = new SoundFile(this, "../output/samples/clap.wav");
 }      
 
 
@@ -111,16 +111,16 @@ void draw() {
 void oscEvent(OscMessage message) {
   if (message.checkAddrPattern("/kick")) {
     float velocity = message.get(0).floatValue();
-    samples[1].play(0.5, velocity);
+    samples[2].play(0.5, velocity);
   } else if (message.checkAddrPattern("/snare")) {
     float velocity = message.get(0).floatValue();
-    samples[2].play(0.5, velocity);
+    samples[3].play(0.5, velocity);
   } else if (message.checkAddrPattern("/hihat")) {
     float velocity = message.get(0).floatValue();
-    samples[3].play(0.5, velocity);
+    samples[4].play(0.5, velocity);
   } else if (message.checkAddrPattern("/clap")) {
     float velocity = message.get(0).floatValue();
-    samples[4].play(0.5, velocity);
+    samples[5].play(0.5, velocity);
   } else if (message.checkAddrPattern("/wek/outputs")) {
     if (message.checkTypetag("f")) {
 
