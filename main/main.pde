@@ -99,7 +99,7 @@ void draw() {
       }
     }
 
-    if (frameCount % 2 == 0){
+    if (frameCount % 2 == 0) {
       sendOsc(downPix);
     }
   }
@@ -122,9 +122,12 @@ void oscEvent(OscMessage message) {
     float velocity = message.get(0).floatValue();
     samples[4].play(0.5, velocity);
   } else if (message.checkAddrPattern("/wek/outputs")) {
-    int id = message.get(0).intValue();
-    if (id < samples.length) {
-      samples[id].play();
+    if (message.checkTypetag("f")) {
+
+      int id = (int) message.get(0).floatValue();
+      if (id < samples.length) {
+        samples[id].play();
+      }
     }
   }
 }
