@@ -12,8 +12,8 @@ int numPixelsOrig;
 int numPixels;
 boolean first = true;
 
-int boxWidth = 64;
-int boxHeight = 48;
+int boxWidth = 32;
+int boxHeight = 24;
 
 int numHoriz = 640/boxWidth;
 int numVert = 480/boxHeight;
