@@ -24,6 +24,7 @@ Capture video;
 int numberOfSamples = 6;
 SoundFile[] samples = new SoundFile[numberOfSamples];
 
+int currentSample = 0;
 
 void setup() {
   size(640, 480, P2D);
@@ -125,8 +126,12 @@ void oscEvent(OscMessage message) {
     if (message.checkTypetag("f")) {
 
       int id = (int) message.get(0).floatValue();
+      if(id == currentSample){
+        return;
+      }
       if (id < samples.length) {
         samples[id].play();
+        currentSample = id;
       }
     }
   }
